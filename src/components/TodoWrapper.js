@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import TodoList from './TodoList'
+import { addTodo } from '../redux/actions'
 
-const TodoWrapper = () => {
+const TodoWrapper = ({ dispatch }) => {
     let input
 
     return (
@@ -9,6 +11,8 @@ const TodoWrapper = () => {
             <form
                 onSubmit={e => {
                     e.preventDefault()
+                    dispatch(addTodo(input.value))
+                    input.value = ''
                 }}
             >
                 <input
@@ -23,4 +27,4 @@ const TodoWrapper = () => {
     )
 }
 
-export default TodoWrapper
+export default connect()(TodoWrapper)
