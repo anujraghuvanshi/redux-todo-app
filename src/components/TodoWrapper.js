@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import TodoList from './TodoList'
+import VisibleTodoList from './VisibleTodoList'
 import { addTodo } from '../redux/actions'
 
 const TodoWrapper = ({ dispatch }) => {
@@ -11,6 +11,7 @@ const TodoWrapper = ({ dispatch }) => {
             <form
                 onSubmit={e => {
                     e.preventDefault()
+                    if (input.value.trim() === '') return
                     dispatch(addTodo(input.value))
                     input.value = ''
                 }}
@@ -22,7 +23,7 @@ const TodoWrapper = ({ dispatch }) => {
                 />
                 <button type="submit">Add Todo</button>
             </form>
-            <TodoList />
+            <VisibleTodoList />
         </div>
     )
 }

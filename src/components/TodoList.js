@@ -1,17 +1,10 @@
 import React from 'react'
-import { getTodosState } from '../redux/selectors'
-import { connect } from 'react-redux'
+import Todo from './Todo'
 
-const TodoList = ({ todos }) =>
-    todos.map((item, idx) => (
-        <div key={idx} style={{ color: '#fff' }}>
-            {item.text}
-        </div>
+const TodoList = ({ todos, toggleTodo }) => {
+    return todos.map((todo, idx) => (
+        <Todo key={idx} {...todo} onClick={() => toggleTodo(todo)} />
     ))
-
-const mapStateToProps = state => {
-    const todos = getTodosState(state)
-    return { todos }
 }
 
-export default connect(mapStateToProps)(TodoList)
+export default TodoList
