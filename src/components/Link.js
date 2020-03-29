@@ -15,7 +15,7 @@ const Link = ({ onClick, active, children }) => (
 )
 
 const mapStateToProps = (state, ownProps) => ({
-    active: ownProps.filter === state.visibilityFilter
+    active: ownProps.filter === state.visibilityFilters
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
